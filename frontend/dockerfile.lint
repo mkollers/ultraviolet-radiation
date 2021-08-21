@@ -1,0 +1,16 @@
+###### Base
+FROM node:16-bullseye-slim as packages
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+###### Source
+FROM packages as source
+WORKDIR /app
+COPY . .
+
+###### Lint
+FROM source as lint
+RUN npm run lint
+
+# docker build -f dockerfile.lint -t ultraviolet-radiation-lint .
