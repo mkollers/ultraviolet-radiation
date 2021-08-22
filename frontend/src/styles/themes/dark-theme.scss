@@ -1,0 +1,134 @@
+$green: (
+  50 : #e3eff0,
+  100 : #bad8da,
+  200 : #8cbec1,
+  300 : #5ea3a8,
+  400 : #3c9096,
+  500 : #197c83,
+  600 : #16747b,
+  700 : #126970,
+  800 : #0e5f66,
+  900 : #084c53,
+  A100 : #87f2ff,
+  A200 : #54edff,
+  A400 : #21e7ff,
+  A700 : #08e4ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000
+  )
+);
+
+$petrol: (
+  50 : #e9ebee,
+  100 : #c8cdd4,
+  200 : #a3acb8,
+  300 : #7e8a9c,
+  400 : #627186,
+  500 : #465871,
+  600 : #3f5069,
+  700 : #37475e,
+  800 : #2f3d54,
+  900 : #202d42,
+  A100 : #87b2ff,
+  A200 : #5491ff,
+  A400 : #2170ff,
+  A700 : #085fff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff
+  )
+);
+
+@mixin set-vars($theme) {
+  $primary: map-get($theme, primary);
+  $secondary: map-get($theme, accent);
+
+  // Primary
+  --clr-primary-m1: #{mat-color($primary, 900)};
+  --clr-primary-m1-contrast: #{mat-contrast($primary, 900)};
+  --clr-primary: #{mat-color($primary, 300)};
+  --clr-primary-contrast: #{mat-contrast($primary, 300)};
+  --clr-primary-p1: #{mat-color($primary, 50)};
+  --clr-primary-p1-contrast: #{mat-contrast($primary, 50)};
+
+  // Secondary
+  --clr-secondary-m1: #{mat-color($secondary, 900)};
+  --clr-secondary-m1-contrast: #{mat-contrast($secondary, 900)};
+  --clr-secondary: #{mat-color($secondary, 300)};
+  --clr-secondary-contrast: #{mat-contrast($secondary, 300)};
+  --clr-secondary-p1: #{mat-color($secondary, 50)};
+  --clr-secondary-p1-contrast: #{mat-contrast($secondary, 50)};
+
+  // Neutral
+  --clr-neutral-0dp: #121212;
+  --clr-neutral-1dp: #1D1D1D;
+  --clr-neutral-2dp: #212121;
+  --clr-neutral-3dp: #242424;
+  --clr-neutral-4dp: #272727;
+  --clr-neutral-6dp: #2C2C2C;
+  --clr-neutral-8dp: #2D2D2D;
+  --clr-neutral-12dp: #323232;
+  --clr-neutral-16dp: #343434;
+  --clr-neutral-24dp: #373737;
+  --clr-neutral-white: #D2D2D2;
+
+  // Denotive
+  --clr-error: #F44336;
+  --clr-error-contrast: #FFFFFF;
+
+  --clr-warn: #F57C00;
+  --clr-warn-contrast: #FFFFFF;
+
+  --clr-success: #4CAF50;
+  --clr-success-contrast: #FFFFFF;
+
+  --clr-info: #2196F3;
+  --clr-info-contrast: #FFFFFF;
+}
+
+$primary: mat-palette($green);
+$secondary: mat-palette($petrol);
+
+$dark-theme: mat-dark-theme($primary, $secondary);
+
+$dark-background: map-get($dark-theme, background);
+$dark-background: map_merge($dark-background, (background: var(--clr-neutral-0dp)));
+
+$dark-theme: map_merge($dark-theme, (
+  background: $dark-background
+));
+
+.helpdesk-dark-theme {
+  @include set-vars($dark-theme);
+}
+
+// Makes the splash screen work at a root level
+:root {
+  --clr-neutral-m4: #2B2B2B;
+  --clr-secondary: #465871;
+}
