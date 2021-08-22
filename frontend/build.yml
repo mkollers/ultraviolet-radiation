@@ -86,3 +86,26 @@ jobs:
           reportDirectory: '$(Common.TestResultsDirectory)/test-results'
           pathToSources: frontend
         continueOnError: true
+  - job: build
+    timeoutInMinutes: 15
+    displayName: Build docker image
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: Docker@0
+        displayName: 'Build'
+        inputs:
+          containerregistrytype: 'Container Registry'
+          dockerRegistryConnection: 'Docker Hub'
+          dockerFile: frontend/dockerfile
+          imageName: mkollers/ultraviolet-radiation
+          additionalImageTags: '$(Build.BuildNumber)'
+      - task: Docker@0
+        displayName: 'Push an image'
+        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+        inputs:
+          containerregistrytype: 'Container Registry'
+          dockerRegistryConnection: 'Docker Hub'
+          action: 'Push an image'
+          imageName: mkollers/ultraviolet-radiation
+          additionalImageTags: '$(Build.BuildNumber)'
