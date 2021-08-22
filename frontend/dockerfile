@@ -1,0 +1,26 @@
+###### Base
+FROM node:16-bullseye-slim as packages
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+###### Source
+FROM packages as source
+WORKDIR /app
+COPY . .
+
+###### Build
+FROM source as build
+WORKDIR /app
+# This is require dto avoid failures like "/app/src/app/app.component.scss - Error: /app/src/app/app.component.scss from Css Minimizer"
+RUN node node_modules/esbuild/install.js
+RUN npm run build
+
+###### Run
+FROM nginx:alpine
+VOLUME /var/cache/nginx
+COPY --from=build /app/dist/ultraviolet-radiation /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+# docker build -t ultraviolet-radiation .
+# docker run -it --rm -p 4200:80 ultraviolet-radiation
