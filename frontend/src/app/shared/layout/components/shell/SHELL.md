@@ -1,0 +1,2 @@
+**purpose**  
+This component is used for pages with the shell design. The shell is the name for a default app frame like header, footer and sidenav. Usually the shell is required on most of the pages, because you would like to show the header, footer and navigation everywhere. There are just some pages, like pages where the user isn't logged in, where you want to hide the shell - in this case, use the `no-shell`-component.

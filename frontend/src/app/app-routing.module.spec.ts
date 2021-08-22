@@ -3,6 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { LoadChildrenCallback, Router, Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppRoutingModule } from './app-routing.module';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { LandingPageModule } from './pages/landing-page/landing-page.module';
 
 describe('AppRoutingModule', () => {
     it('should create', () => {
@@ -36,6 +38,7 @@ describe('AppRoutingModule', () => {
         });
 
         const cases: { path: string, module: Type<any>, component: Type<any>, canLoad?: Type<any>[] }[] = [
+            { path: '', module: LandingPageModule, component: LandingPageComponent },
         ];
         for (const c of cases) {
             it(`should load ${c.module.name}`, async () => {
