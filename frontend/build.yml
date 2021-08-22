@@ -1,0 +1,38 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - frontend/*
+  
+pr:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - frontend/*
+      
+resources:
+- repo: self
+      
+name: frontend--$(Date:yyyy)-$(Date:MM)-$(Date:dd)$(Rev:.r)--$(Build.SourceBranchName)
+
+variables:
+  tag: '$(Build.BuildId)'
+
+jobs:
+  - job: lint
+    displayName: Linter rules 
+    timeoutInMinutes: 15
+    pool:
+      name: 'ubuntu-latest'
+    steps:
+      - task: Docker@2
+        displayName: Lint
+        inputs:
+          containerRegistry: 'Docker Hub'
+          repository: 'ultraviolet-radiation'
+          command: build
+          Dockerfile: frontend/dockerfile.lint
