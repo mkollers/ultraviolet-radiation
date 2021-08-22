@@ -27,7 +27,7 @@ jobs:
     displayName: Linter rules 
     timeoutInMinutes: 15
     pool:
-      name: 'ubuntu-latest'
+      vmImage: 'ubuntu-latest'
     steps:
       - task: Docker@2
         displayName: Lint
