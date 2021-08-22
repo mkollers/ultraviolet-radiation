@@ -42,11 +42,11 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-      - task: Docker@2
-        displayName: 'Test'
+      - task: Docker@0
+        displayName: 'Build image'
         inputs:
-          containerRegistry: 'Docker Hub'
-          repository: 'ultraviolet-radiation'
+          containerregistrytype: 'Container Registry'
+          dockerRegistryConnection: 'Docker Hub'
           dockerFile: frontend/dockerfile.test
           imageName: mkollers/ultraviolet-radiation-test
           additionalImageTags: '$(Build.BuildNumber)'
