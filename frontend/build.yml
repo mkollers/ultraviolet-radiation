@@ -36,3 +36,53 @@ jobs:
           repository: 'ultraviolet-radiation'
           command: build
           Dockerfile: frontend/dockerfile.lint
+- job: test
+    displayName: Unit tests
+    timeoutInMinutes: 30
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: Docker@2
+        displayName: 'Test'
+        inputs:
+          containerRegistry: 'Docker Hub'
+          repository: 'ultraviolet-radiation'
+          dockerFile: frontend/dockerfile.test
+          imageName: mkollers/ultraviolet-radiation-test
+          additionalImageTags: '$(Build.BuildNumber)'
+      - task: Docker@0
+        displayName: 'Run test image'
+        inputs:
+          containerregistrytype: 'Container Registry'
+          dockerRegistryConnection: 'Docker Hub'
+          action: 'Run an image'
+          imageName: mkollers/ultraviolet-radiation-test
+          containerName: 'ultraviolet-radiation-test-$(Build.BuildNumber)'
+      - task: Docker@0
+        displayName: 'Copy test results'
+        inputs:
+          containerregistrytype: 'Container Registry'
+          dockerRegistryConnection: 'Docker Hub'
+          action: 'Run a Docker command'
+          customCommand: 'cp ultraviolet-radiation-test-$(Build.BuildNumber):/test-results ../TestResults'
+      - task: Docker@0
+        displayName: 'Stop test image'
+        inputs:
+          containerregistrytype: 'Container Registry'
+          dockerRegistryConnection: 'Docker Hub'
+          action: 'Run a Docker command'
+          customCommand: 'rm -f ultraviolet-radiation-test-$(Build.BuildNumber)'
+      - task: PublishTestResults@2
+        displayName: 'Publish Test Results'
+        inputs:
+          testResultsFiles: '**/junit.xml'
+          searchFolder: '$(Common.TestResultsDirectory)'
+        continueOnError: true
+      - task: PublishCodeCoverageResults@1
+        displayName: 'Publish code coverage'
+        inputs:
+          codeCoverageTool: Cobertura
+          summaryFileLocation: '$(Common.TestResultsDirectory)/test-results/cobertura-coverage.xml'
+          reportDirectory: '$(Common.TestResultsDirectory)/test-results'
+          pathToSources: frontend
+        continueOnError: true

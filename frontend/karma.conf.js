@@ -10,7 +10,7 @@ module.exports = function (config) {
     },
     coverageReporter: {
       include: 'src/app/**/!(*.spec|environment*).(ts|js)',
-      dir: require('path').join(__dirname, './coverage/ultraviolet-radiation'),
+      dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
       reporters: [
         { type: 'html' },
