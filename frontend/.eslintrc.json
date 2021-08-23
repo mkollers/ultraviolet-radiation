@@ -21,7 +21,8 @@
       ],
       "env": {
         "browser": true,
-        "jest": true
+        "jest": true,
+        "jasmine": true
       },
       "rules": {
         "@angular-eslint/directive-selector": [

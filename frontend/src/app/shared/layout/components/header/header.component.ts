@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, INJECTOR, Injector } from '@angular/core';
-import { inject } from '@angular/core/testing';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { User } from '@auth0/auth0-spa-js';
 import { WINDOW } from '@shared/helper/injection-tokens/window.injection-token';
@@ -16,14 +15,14 @@ export class HeaderComponent {
 
   constructor(
     private _authService: AuthService,
-    @Inject(WINDOW) private _window: Window
+    @Inject(WINDOW) private _window: Window // eslint-disable-line @typescript-eslint/no-unused-vars
   ) {
     this.user$ = _authService.user$;
   }
 
   logOut() {
     this._authService.logout({
-      returnTo: `${window.origin}`
+      returnTo: `${this._window.origin}`
     });
   }
 }
