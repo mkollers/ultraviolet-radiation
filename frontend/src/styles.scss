@@ -26,6 +26,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body {
+  background-color: var(--clr-neutral-0dp);
+}
+
 // Transition between themes
 * {
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s !important;
