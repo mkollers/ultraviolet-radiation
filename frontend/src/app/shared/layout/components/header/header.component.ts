@@ -15,7 +15,7 @@ export class HeaderComponent {
 
   constructor(
     private _authService: AuthService,
-    @Inject(WINDOW) private _window: Window // eslint-disable-line @typescript-eslint/no-unused-vars
+    @Inject(WINDOW) private _window: Window // eslint-disable-line no-unused-vars
   ) {
     this.user$ = _authService.user$;
   }
