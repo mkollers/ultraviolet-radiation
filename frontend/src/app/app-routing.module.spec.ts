@@ -2,9 +2,13 @@ import { NgZone, Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { LoadChildrenCallback, Router, Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthGuard } from '@auth0/auth0-angular';
+import { LandingPageComponent } from '@pages/landing-page/landing-page.component';
+import { LandingPageModule } from '@pages/landing-page/landing-page.module';
+import { SigninCallbackPageComponent } from '@pages/signin-callback-page/signin-callback-page.component';
+import { SigninCallbackPageModule } from '@pages/signin-callback-page/signin-callback-page.module';
+
 import { AppRoutingModule } from './app-routing.module';
-import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { LandingPageModule } from './pages/landing-page/landing-page.module';
 
 describe('AppRoutingModule', () => {
     it('should create', () => {
@@ -37,8 +41,9 @@ describe('AppRoutingModule', () => {
             });
         });
 
-        const cases: { path: string, module: Type<any>, component: Type<any>, canLoad?: Type<any>[] }[] = [
-            { path: '', module: LandingPageModule, component: LandingPageComponent },
+        const cases: { path: string, module: Type<any>, component: Type<any>, canLoad?: Type<any>[], canActivate?: Type<any>[] }[] = [
+            { path: 'signin-callback', module: SigninCallbackPageModule, component: SigninCallbackPageComponent },
+            { path: '', module: LandingPageModule, component: LandingPageComponent, canLoad: [AuthGuard] },
         ];
         for (const c of cases) {
             it(`should load ${c.module.name}`, async () => {

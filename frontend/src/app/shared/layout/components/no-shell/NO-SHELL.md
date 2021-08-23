@@ -1,0 +1,3 @@
+**Purpose**  
+This component is used for pages without the shell design. The shell is the name for a default app frame like header, footer and sidenav. Usually this makes sense on auth-pages like redirect or forbidden, where the standard content of a page would break.  
+Expect you've got a header, where the current user will be shown - his name, his avatar and a logout action. If the user isn't logged in successfully, this component will break. This is a case where the no-shell-component would be a great fit.

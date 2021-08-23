@@ -6,6 +6,7 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
+import { instance, mock } from 'ts-mockito';
 
 /* eslint-disable no-unused-vars */
 declare const require: {
@@ -26,3 +27,14 @@ getTestBed().initTestEnvironment(
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
+
+// Helper to improve sturcutre of ts mockito tests
+export class Mock<T> {
+  mock: T;
+  instance: T;
+
+  constructor() {
+    this.mock = mock<T>();
+    this.instance = instance(this.mock);
+  }
+}
