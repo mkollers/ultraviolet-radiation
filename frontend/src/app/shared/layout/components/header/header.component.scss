@@ -6,8 +6,8 @@
     color: var(--clr-secondary);
     display: grid;
     gap: 0 24px;
-    grid-template-areas: "logo content search feedback user";
-    grid-template-columns: auto auto 1fr auto;
+    grid-template-areas: "logo plcaeholder user";
+    grid-template-columns: auto 1fr auto;
     grid-template-rows: 40px;
     height: var(--header-height-small);
     height: calc(var(--header-height-small) + env(safe-area-inset-top));
@@ -70,7 +70,8 @@
     grid-area: logo;
     margin-left: 16px;
     h1 {
-        font-weight: 300;
+        font-weight: 400;
+        font-size: 1.2rem;
     }
 }
 
