@@ -1,0 +1,84 @@
+:host {
+    align-content: center;
+    align-items: center;
+    background-color: var(--clr-neutral-1dp) !important;
+    box-sizing: border-box;
+    color: var(--clr-secondary);
+    display: grid;
+    gap: 0 24px;
+    grid-template-areas: "logo content search feedback user";
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-rows: 40px;
+    height: var(--header-height-small);
+    height: calc(var(--header-height-small) + env(safe-area-inset-top));
+    left: 0;
+    min-width: min-content;
+    padding-top: env(safe-area-inset-top, 0);
+    padding: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    user-select: none;
+    width: 100%;
+    z-index: 2;
+}
+
+.user-btn {
+    background: transparent;
+    color: var(--clr-neutral-white);
+    grid-area: user;
+    height: 40px;
+    min-width: 200px;
+}
+
+.user {
+    align-items: center;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: auto 1fr;
+    line-height: normal;
+    text-align: start;
+}
+
+.avatar {
+    border-radius: 4px;
+    color: var(--clr-neutral-white);
+    display: inline-block;
+    font-size: 0.875rem;
+    height: 28px;
+    line-height: 28px;
+    opacity: 0.8;
+    opacity: 1;
+    text-align: center;
+    vertical-align: middle;
+    width: 28px;
+}
+
+.user-info {
+    align-items: center;
+    display: grid;
+    font-size: 0.75rem;
+}
+
+.name {
+    font-weight: 700;
+}
+
+#logo {
+    display: grid;
+    font-size: 16px;
+    grid-area: logo;
+    margin-left: 16px;
+    h1 {
+        font-weight: 300;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    ::ng-deep .user-menu {
+        &.mat-menu-panel {
+            max-width: 100%;
+            width: 200px;
+        }
+    }
+}

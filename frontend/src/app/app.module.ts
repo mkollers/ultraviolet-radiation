@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '@auth0/auth0-angular';
+import { WINDOW } from '@shared/helper/injection-tokens/window.injection-token';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +15,7 @@ import { LayoutModule } from './shared/layout/layout.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
 
     // 3rd party
@@ -26,7 +29,8 @@ import { LayoutModule } from './shared/layout/layout.module';
     LayoutModule
   ],
   providers: [
-    { provide: STORAGE, useValue: localStorage }
+    { provide: STORAGE, useValue: localStorage },
+    { provide: WINDOW, useValue: window }
   ],
   bootstrap: [AppComponent]
 })

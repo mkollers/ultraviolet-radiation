@@ -15,7 +15,7 @@ const routes: Routes = [
     path: '',
     component: ShellComponent,
     loadChildren: () => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule),
-    canLoad: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' }
 ];

@@ -1,0 +1,15 @@
+<span id="logo">
+    <h1>Live UV</h1>
+</span>
+<button class="user-btn" mat-button [matMenuTriggerFor]="userMenu">
+    <div class="user" *ngIf="(user$ | async) as user">
+        <span [style.background-color]="user | initials | nameColor" class="avatar">{{ user | initials }}</span>
+        <div class="user-info">
+            <span class="name">{{ user | userName }}</span>
+            <span *ngIf="user?.given_name && user?.family_name">{{user?.email}}</span>
+        </div>
+    </div>
+</button>
+<mat-menu #userMenu="matMenu" class="uv-menu user-menu" xPosition="before">
+    <button mat-menu-item (click)="logOut()">Abmelden</button>
+</mat-menu>

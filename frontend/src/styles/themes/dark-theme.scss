@@ -31,36 +31,36 @@ $green: (
   )
 );
 
-$petrol: (
-  50 : #e9ebee,
-  100 : #c8cdd4,
-  200 : #a3acb8,
-  300 : #7e8a9c,
-  400 : #627186,
-  500 : #465871,
-  600 : #3f5069,
-  700 : #37475e,
-  800 : #2f3d54,
-  900 : #202d42,
-  A100 : #87b2ff,
-  A200 : #5491ff,
-  A400 : #2170ff,
-  A700 : #085fff,
+$pink: (
+  50 : #fde1f2,
+  100 : #fab3df,
+  200 : #f780ca,
+  300 : #f44db5,
+  400 : #f127a5,
+  500 : #ef0195,
+  600 : #ed018d,
+  700 : #eb0182,
+  800 : #e80178,
+  900 : #e40067,
+  A100 : #ffffff,
+  A200 : #ffd8e7,
+  A400 : #ffa5c8,
+  A700 : #ff8bb8,
   contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #ffffff,
-    A700 : #ffffff
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
   )
 );
 
@@ -112,7 +112,7 @@ $petrol: (
 }
 
 $primary: mat-palette($green);
-$secondary: mat-palette($petrol);
+$secondary: mat-palette($pink);
 
 $dark-theme: mat-dark-theme($primary, $secondary);
 
@@ -123,7 +123,7 @@ $dark-theme: map_merge($dark-theme, (
   background: $dark-background
 ));
 
-.helpdesk-dark-theme {
+.uv-dark-theme {
   @include set-vars($dark-theme);
 }
 

@@ -6,6 +6,18 @@
 
 @import './styles/global';
 
+:root {
+  --content-padding: 48px;
+
+  // Header
+  --header-height-small: 40px;
+  --header-height-large: 64px;
+
+  @media screen and (max-width: 960px) {
+    --content-padding: 16px;
+  }
+}
+
 html,
 body {
   font-family: 'Roboto', Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;

@@ -1,0 +1,39 @@
+.uv-menu {
+    &.mat-menu-panel {
+      background-color: var(--clr-neutral-0dp);
+      border-radius: 2px;
+      min-height: 38px;
+    }
+  
+    .mat-menu-content:not(:empty) {
+      padding: 0;
+    }
+  
+    .mat-menu-item {
+      color: var(--clr-secondary);
+      font-size: .8125rem;
+      height: 38px;
+      line-height: 1.25rem;
+  
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--clr-neutral-6dp);
+      }
+  
+      &.active {
+        border-left: 4px solid var(--clr-primary);
+        color: var(--clr-primary);
+        padding-left: 12px; // less padding because of 4px border on the left
+      }
+  
+      &.active,
+      &:hover {
+        transition-duration: 400ms;
+        transition-property: border-left-color;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+  
+      &.mat-menu-item-submenu-trigger::after {
+        color: var(--clr-secondary);
+      }
+    }
+  }

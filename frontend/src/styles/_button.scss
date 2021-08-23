@@ -1,0 +1,12 @@
+.uv-button {
+    .mat-icon {
+        height: 1.25rem; // We use px instead of rem here, cause we want the icon to scale.
+        margin-right: 6px;
+        vertical-align: sub;
+        width: 1.25rem; // We use px instead of rem here, cause we want the icon to scale.
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+}

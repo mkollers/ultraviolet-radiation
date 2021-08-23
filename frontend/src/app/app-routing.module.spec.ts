@@ -43,7 +43,7 @@ describe('AppRoutingModule', () => {
 
         const cases: { path: string, module: Type<any>, component: Type<any>, canLoad?: Type<any>[], canActivate?: Type<any>[] }[] = [
             { path: 'signin-callback', module: SigninCallbackPageModule, component: SigninCallbackPageComponent },
-            { path: '', module: LandingPageModule, component: LandingPageComponent, canLoad: [AuthGuard] },
+            { path: '', module: LandingPageModule, component: LandingPageComponent, canActivate: [AuthGuard] },
         ];
         for (const c of cases) {
             it(`should load ${c.module.name}`, async () => {
