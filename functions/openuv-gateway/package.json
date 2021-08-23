@@ -1,8 +1,8 @@
 {
-  "name": "hello-world",
+  "name": "openuv-gateway",
   "version": "1.0.0",
   "description": "netlify functions:create - hello world in typescript",
-  "main": "hello-world.ts",
+  "main": "openuv-gateway.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,7 +15,9 @@
   "license": "MIT",
   "dependencies": {
     "@netlify/functions": "^0.7.2",
-    "@types/node": "^14.0.0",
     "typescript": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.1"
   }
 }
