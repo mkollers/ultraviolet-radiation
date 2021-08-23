@@ -1,12 +1,12 @@
-import { Handler } from '@netlify/functions'
+import { Handler, HandlerContext } from '@netlify/functions'
 import * as https from 'https';
 
 const url = 'https://api.openuv.io/api/v1/uv';
 
 export const handler: Handler = async (event, context) => {
-  const { name = 'stranger' } = event.queryStringParameters
+  const pa = event.queryStringParameters
 
-  const [code, body] = await callOpenUV();
+  const [code, body] = await callOpenUV(event.queryStringParameters);
 
   return {
     statusCode: code,
@@ -18,7 +18,6 @@ function callOpenUV(): Promise<[number, any]> {
   return new Promise((resolve, reject) => {
     const apiKey = process.env.OPENUV_APIKEY;
 
-    console.log(apiKey);
     const opt: https.RequestOptions = {
       headers: {
         'x-access-token': apiKey
