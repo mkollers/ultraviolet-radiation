@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { UvResponse } from '../responses/uv-response';
 import { BaseService } from './base.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UvService extends BaseService {
 
   constructor(
@@ -15,7 +13,7 @@ export class UvService extends BaseService {
   }
 
   getUvData(lat: number, lng: number) {
-    const url = `/.netlify/functions/openuv-gateway?lat=${lat}&lng=${lng}`;
+    const url = `https://uv.markuskollers.de/.netlify/functions/openuv-gateway?lat=${lat}&lng=${lng}`;
     return super.get<UvResponse>(url);
   }
 }

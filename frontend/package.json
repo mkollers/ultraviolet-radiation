@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~12.2.2",
     "@angular/router": "~12.2.2",
     "@auth0/auth0-angular": "^1.6.0",
+    "angular-highcharts": "^12.0.0",
+    "highcharts": "^9.2.2",
     "rxjs": "~7.3.0",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"

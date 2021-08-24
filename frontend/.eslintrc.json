@@ -3,6 +3,9 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "globals": {
+    "google": "readonly"
+   },
   "overrides": [
     {
       "files": [
@@ -14,7 +17,7 @@
         ],
         "createDefaultProgram": true
       },
-      "extends": [
+        "extends": [
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "eslint:recommended"

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { firstValueFrom, of, throwError } from 'rxjs';
-import { marbles } from 'rxjs-marbles/jasmine';
 import { Mock } from 'src/test';
 import { when } from 'ts-mockito';
 
@@ -46,7 +45,7 @@ describe('LocationSelectorComponent', () => {
     expect(await firstValueFrom(component.apiLoaded)).toBeFalse();
   }));
 
-  it('should propagade lat and lng', marbles(m => {
+  it('should propagade lat and lng', () => {
     // Arrange
     const component = new LocationSelectorComponent(httpClient.instance);
     const latLng: google.maps.LatLng = { lat: () => 50, lng: () => 8 } as unknown as google.maps.LatLng;
@@ -57,5 +56,5 @@ describe('LocationSelectorComponent', () => {
 
     // Assert
     expect(component.positionChanged.emit).toHaveBeenCalledWith([50, 8]);
-  }));
+  });
 });

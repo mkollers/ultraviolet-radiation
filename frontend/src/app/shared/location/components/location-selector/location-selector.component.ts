@@ -16,7 +16,7 @@ export class LocationSelectorComponent {
   markerOptions: google.maps.MarkerOptions = { draggable: true };
   markerPosition: google.maps.LatLngLiteral = { lat: 50.0296291, lng: 8.276255 };
 
-  @Output('positionChanged') positionChanged = new EventEmitter<[number, number]>();
+  @Output() positionChanged = new EventEmitter<[number, number]>();
 
   constructor(httpClient: HttpClient) {
     this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyD4xcKIK54iuJQpb4Jj3pwH_-ohsg0pZrs', 'callback')

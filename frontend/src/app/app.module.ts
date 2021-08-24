@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '@auth0/auth0-angular';
+import { DataAccessModule } from '@shared/data-access/data-access.module';
 import { WINDOW } from '@shared/helper/injection-tokens/window.injection-token';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,7 @@ import { LayoutModule } from './shared/layout/layout.module';
     }),
 
     // Custom
+    DataAccessModule,
     LayoutModule
   ],
   providers: [

@@ -22,12 +22,12 @@ describe('UvService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('Get Agents', () => {
+  describe('getUvData', () => {
     it('should call url', () => {
       // Arrange
       const lat = faker.datatype.float();
       const lng = faker.datatype.float();
-      const url = `/.netlify/functions/openuv-gateway?lat=${lat}&lng=${lng}`;
+      const url = `https://uv.markuskollers.de/.netlify/functions/openuv-gateway?lat=${lat}&lng=${lng}`;
       when(httpClient.mock.get(url)).thenReturn(of());
 
       // Act

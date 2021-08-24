@@ -4,7 +4,7 @@ import { retry, timeout } from 'rxjs/operators';
 
 export class BaseService {
     constructor(
-        protected _httpClient: HttpClient
+        protected _httpClient: HttpClient // eslint-disable-line no-unused-vars
     ) { }
 
     protected get<T>(url: string): Observable<T> {
