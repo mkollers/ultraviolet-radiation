@@ -25,9 +25,9 @@ export const handler: Handler = async (event, context) => {
   return {
     statusCode: code,
     body,
-    headers: [
+    headers: {
       'content-type': 'application/json; charset=utf-8'
-    ]
+    }
   }
 }
 
