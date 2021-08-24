@@ -10,13 +10,19 @@ export const handler: Handler = async (event, context) => {
   if (!params.lat) {
     return {
       statusCode: 400,
-      body: JSON.stringify(new HttpErrorResponse('MissingQueryParameter', "The query parameter lat is required."))
+      body: JSON.stringify(new HttpErrorResponse('MissingQueryParameter', "The query parameter lat is required.")),
+      headers: {
+        'content-type': 'application/json; charset=utf-8'
+      }
     };
   }
   if (!params.lng) {
     return {
       statusCode: 400,
-      body: JSON.stringify(new HttpErrorResponse('MissingQueryParameter', "The query parameter lng is required."))
+      body: JSON.stringify(new HttpErrorResponse('MissingQueryParameter', "The query parameter lng is required.")),
+      headers: {
+        'content-type': 'application/json; charset=utf-8'
+      }
     };
   }
 
