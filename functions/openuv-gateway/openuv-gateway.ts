@@ -1,10 +1,24 @@
 import { Handler } from '@netlify/functions';
 import * as https from 'https';
+
 import { HttpErrorResponse } from './http-error-response';
 
 
 export const handler: Handler = async (event, context) => {
   const params = event.queryStringParameters;
+
+  if (event.httpMethod === 'OPTIONS') {
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    };
+
+    return {
+      statusCode: 204,
+      headers
+    };
+  }
 
   // Validation
   if (!params.lat) {
