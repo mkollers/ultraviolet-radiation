@@ -1,4 +1,14 @@
-<uv-location-selector></uv-location-selector>
+<section>
+    <p>Aktualisierungsintervall</p>
+    <mat-button-toggle-group [value]="interval$.value" (change)="interval$.next($event.value)" name="Aktualisierungsintervall">
+        <mat-button-toggle [value]="5">5s</mat-button-toggle>
+        <mat-button-toggle [value]="15">15s</mat-button-toggle>
+        <mat-button-toggle [value]="30">30s</mat-button-toggle>
+        <mat-button-toggle [value]="60">60s</mat-button-toggle>
+    </mat-button-toggle-group>
+</section>
+
+<uv-location-selector *ngIf="'Premium' | hasRole | async"></uv-location-selector>
 <uv-line-chart label="UV-Belastung" #UVChart></uv-line-chart>
 <uv-line-chart label="Ozon-Belastung" #OzoneChart></uv-line-chart>
 <uv-line-chart label="Sonnenstand" #SunHeightChart></uv-line-chart>

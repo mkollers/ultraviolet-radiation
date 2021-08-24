@@ -1,0 +1,7 @@
+.mat-button-toggle {
+    color: var(--clr-neutral-white);
+
+    &.mat-button-toggle-checked {
+      color: var(--clr-secondary);
+    }
+}

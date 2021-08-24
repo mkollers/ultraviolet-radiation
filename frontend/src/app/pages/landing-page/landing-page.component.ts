@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
 import { LineChartComponent } from '@shared/charts/components/uv-chart/line-chart.component';
 import { UvService } from '@shared/data-access/services/uv.service';
-import { catchError, of, switchMapTo, takeWhile, tap, timer } from 'rxjs';
+import { BehaviorSubject, catchError, of, switchMap, switchMapTo, takeWhile, tap, timer } from 'rxjs';
 
 @Component({
   selector: 'uv-landing-page',
@@ -11,6 +11,8 @@ import { catchError, of, switchMapTo, takeWhile, tap, timer } from 'rxjs';
 })
 export class LandingPageComponent implements OnDestroy {
   alive = true;
+  interval$ = new BehaviorSubject<number>(15);
+
   COORDINATES: { [key: string]: [number, number] } = {
     Frankfurt: [50.1211277, 8.4964823],
     Moskow: [55.5807482, 36.8251469],
@@ -34,10 +36,12 @@ export class LandingPageComponent implements OnDestroy {
   @ViewChild('SunHeightChart') sunHeightChart: LineChartComponent | undefined;
 
   private _subscribe([lat, lng]: [number, number], label: string) {
-    timer(0, 15 * 1000).pipe(
+    this.interval$.pipe(
+      switchMap(interval => timer(0, interval * 1000)),
       takeWhile(() => this.alive),
       switchMapTo(this._uvservice.getUvData(lat, lng)),
       tap(d => this.addPoints(label, d.result.uv, d.result.ozone, d.result.sun_info.sun_position.altitude)),
+      tap(console.log),
       catchError(() => of(true))
     ).subscribe();
   }

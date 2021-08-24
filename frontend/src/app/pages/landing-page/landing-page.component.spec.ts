@@ -22,4 +22,15 @@ describe('LandingPageComponent', () => {
     // Assert
     expect(component).toBeTruthy();
   });
+
+  it('should set alive to alse on destroy', () => {
+    // Arrange
+    const component = new LandingPageComponent(uvService.instance);
+
+    // Act
+    component.ngOnDestroy();
+
+    // Assert
+    expect(component.alive).toBeFalse();
+  });
 });

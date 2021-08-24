@@ -1,5 +1,5 @@
 main {
     padding: 32px var(--content-padding);
-    padding-top: calc(32px + env(safe-area-inset-top));
+    padding-top: calc(56px + env(safe-area-inset-top));
     grid-area: content;
 }
