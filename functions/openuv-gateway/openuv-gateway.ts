@@ -24,7 +24,10 @@ export const handler: Handler = async (event, context) => {
 
   return {
     statusCode: code,
-    body
+    body,
+    headers: [
+      'content-type': 'application/json; charset=utf-8'
+    ]
   }
 }
 
@@ -49,7 +52,7 @@ function callOpenUV(lat: number, lng: number): Promise<[number, string]> {
 
       // The whole response has been received. Print out the result.
       resp.on('end', () => {
-        resolve([resp.statusCode, JSON.parse(data)]);
+        resolve([resp.statusCode, data]);
       });
 
     }).on("error", (err) => {
