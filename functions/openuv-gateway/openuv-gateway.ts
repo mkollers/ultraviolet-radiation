@@ -6,37 +6,33 @@ import { HttpErrorResponse } from './http-error-response';
 
 export const handler: Handler = async (event, context) => {
   const params = event.queryStringParameters;
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  };
 
   if (event.httpMethod === 'OPTIONS') {
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-    };
-
     return {
       statusCode: 204,
       headers
     };
   }
 
+  headers['content-type'] = 'application/json; charset=utf-8';
   // Validation
   if (!params.lat) {
     return {
       statusCode: 400,
       body: JSON.stringify(new HttpErrorResponse('MissingQueryParameter', "The query parameter lat is required.")),
-      headers: {
-        'content-type': 'application/json; charset=utf-8'
-      }
+      headers
     };
   }
   if (!params.lng) {
     return {
       statusCode: 400,
       body: JSON.stringify(new HttpErrorResponse('MissingQueryParameter', "The query parameter lng is required.")),
-      headers: {
-        'content-type': 'application/json; charset=utf-8'
-      }
+      headers
     };
   }
 
@@ -45,9 +41,7 @@ export const handler: Handler = async (event, context) => {
   return {
     statusCode: code,
     body,
-    headers: {
-      'content-type': 'application/json; charset=utf-8'
-    }
+    headers
   }
 }
 
