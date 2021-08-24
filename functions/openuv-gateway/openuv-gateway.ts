@@ -4,7 +4,8 @@ import * as https from 'https';
 const url = 'https://api.openuv.io/api/v1/uv';
 
 export const handler: Handler = async (event, context) => {
-  const params = event.queryStringParameters
+  const params = event.queryStringParameters;
+  console.log(params);
 
   const [code, body] = await callOpenUV();
 
