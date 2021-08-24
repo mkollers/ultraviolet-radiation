@@ -49,7 +49,7 @@ function callOpenUV(lat: number, lng: number): Promise<[number, string]> {
 
       // The whole response has been received. Print out the result.
       resp.on('end', () => {
-        resolve([resp.statusCode, JSON.stringify(data)]);
+        resolve([resp.statusCode, JSON.parse(data)]);
       });
 
     }).on("error", (err) => {
