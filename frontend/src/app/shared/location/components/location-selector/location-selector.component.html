@@ -1,0 +1,6 @@
+<p>Ziehe den Kartenmarker um deine Position festzulegen</p>
+<div *ngIf="apiLoaded | async">
+    <google-map [center]="center" [zoom]="5" width="750px" height="200px" [options]="options">
+        <map-marker #marker (mapDragend)="mapDragend($event)" [position]="markerPosition" [options]="markerOptions"></map-marker>
+    </google-map>
+</div>

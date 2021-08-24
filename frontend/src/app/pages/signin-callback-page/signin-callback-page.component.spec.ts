@@ -50,7 +50,7 @@ describe('SigninCallbackPageComponent', () => {
   it('should log error', fakeAsync(() => {
     // Arrange
     const err = new Error('graphics card would rather produce sounds');
-    when(authService.mock.handleRedirectCallback()).thenReturn(throwError(err));
+    when(authService.mock.handleRedirectCallback()).thenReturn(throwError(() => err));
     spyOn(console, 'error').and.stub();
 
     // Act
