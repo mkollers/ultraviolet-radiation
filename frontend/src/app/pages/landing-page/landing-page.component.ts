@@ -41,7 +41,6 @@ export class LandingPageComponent implements OnDestroy {
       takeWhile(() => this.alive),
       switchMapTo(this._uvservice.getUvData(lat, lng)),
       tap(d => this.addPoints(label, d.result.uv, d.result.ozone, d.result.sun_info.sun_position.altitude)),
-      tap(console.log),
       catchError(() => of(true))
     ).subscribe();
   }
