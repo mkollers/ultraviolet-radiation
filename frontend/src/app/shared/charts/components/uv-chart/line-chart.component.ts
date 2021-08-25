@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
-import { Point } from 'highcharts';
+import { dateFormat, Point } from 'highcharts';
 
 @Component({
   selector: 'uv-line-chart',
@@ -23,20 +23,16 @@ export class LineChartComponent implements OnInit {
         plotBackgroundColor: 'var(--clr-neutral-1dp)'
       },
       xAxis: {
-        type: 'datetime', 
-        dateTimeLabelFormats: {
-          day: '%HH:%MM:%SS'
-          },
         title: {
-          text: 'Weeks'        
+          text: 'Messungen'
         }
-      },   
+      },
       yAxis: {
         lineColor: 'var(--clr-neutral-1dp)',
         gridLineColor: 'var(--clr-neutral-1dp)'
       },
       plotOptions: {
-        line: { 
+        line: {
           dataLabels: {
             enabled: false
           },
