@@ -18,10 +18,33 @@ export class LineChartComponent implements OnInit {
       chart: {
         type: 'line',
         backgroundColor: 'var(--clr-neutral-1dp)',
-        borderColor: '--clr-neutral-white'
+        borderColor: 'var(--clr-neutral-1dp)',
+        plotBorderColor: 'var(--clr-neutral-1dp)',
+        plotBackgroundColor: 'var(--clr-neutral-1dp)'
       },
       xAxis: {
-
+        type: 'datetime', 
+        dateTimeLabelFormats: {
+          day: '%HH:%MM:%SS'
+          },
+        title: {
+          text: 'Weeks'        
+        }
+      },   
+      yAxis: {
+        lineColor: 'var(--clr-neutral-1dp)',
+        gridLineColor: 'var(--clr-neutral-1dp)'
+      },
+      plotOptions: {
+        line: { 
+          dataLabels: {
+            enabled: false
+          },
+          marker: {
+            enabled: false
+          },
+          enableMouseTracking: true
+        }
       },
       title: {
         text: this.label

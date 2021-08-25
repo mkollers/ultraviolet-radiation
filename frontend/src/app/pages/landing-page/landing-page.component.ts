@@ -11,7 +11,7 @@ import { BehaviorSubject, catchError, of, switchMap, switchMapTo, takeWhile, tap
 })
 export class LandingPageComponent implements OnDestroy {
   alive = true;
-  interval$ = new BehaviorSubject<number>(15);
+  interval$ = new BehaviorSubject<number>(5);
 
   COORDINATES: { [key: string]: [number, number] } = {
     Frankfurt: [50.1211277, 8.4964823],
