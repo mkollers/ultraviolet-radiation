@@ -20,11 +20,7 @@ import { LayoutModule } from './shared/layout/layout.module';
     AppRoutingModule,
 
     // 3rd party
-    AuthModule.forRoot({
-      domain: 'ultraviolet-radiation.eu.auth0.com',
-      clientId: 'mpl5sCivheIoltZgGNMrSkxrx4gmaiYA',
-      redirectUri: `${location.origin}/signin-callback`
-    }),
+    AuthModule.forRoot(), // Configuration is done inside app component
 
     // Custom
     DataAccessModule,

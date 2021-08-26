@@ -1,0 +1,7 @@
+{
+    "auth": {
+        "domain": "ultraviolet-radiation.eu.auth0.com",
+        "clientId": "mpl5sCivheIoltZgGNMrSkxrx4gmaiYA",
+        "redirectUri": "https://uv.markuskollers.de/signin-callback"
+    }
+}
