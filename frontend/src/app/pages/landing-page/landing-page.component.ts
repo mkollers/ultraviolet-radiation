@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, ViewChild } from '@angular/core';
-import { LineChartComponent } from '@shared/charts/components/uv-chart/line-chart.component';
+import { LineChartComponent } from '@pages/landing-page/components/line-chart/line-chart.component';
 import { UvService } from '@shared/data-access/services/uv.service';
 import { BehaviorSubject, catchError, of, switchMap, switchMapTo, takeWhile, tap, timer } from 'rxjs';
 

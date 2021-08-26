@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
-import { dateFormat, Point } from 'highcharts';
+import { Point } from 'highcharts';
 
 @Component({
   selector: 'uv-line-chart',
