@@ -35,7 +35,7 @@ describe('UvService', () => {
 
       // Assert
       verify(httpClient.mock.get(url)).once();
-      expect().nothing();
+      expect().nothing(); // ts-mockito will only throw in case of errors -> this is required to avoid expection warnings
     });
 
     it('should return result', async () => {
@@ -57,6 +57,7 @@ describe('UvService', () => {
       const data = new UvResponseMock();
       const data$ = m.cold('6000ms a|', { a: data });
       when(httpClient.mock.get(anyString())).thenReturn(data$);
+      // We expect 15000ms, because 5000ms timeouts three time (2 retries)
       const expected$ = m.cold('15000ms #', {}, new TimeoutError());
 
       // Act
@@ -64,7 +65,7 @@ describe('UvService', () => {
 
       // Assert
       m.expect(result$).toBeObservable(expected$);
-      expect().nothing();
+      expect().nothing(); // ts-mockito will only throw in case of errors -> this is required to avoid expection warnings
     }));
   });
 });

@@ -44,7 +44,7 @@ describe('SigninCallbackPageComponent', () => {
 
     // Assert
     verify(router.mock.navigateByUrl(url)).once();
-    expect().nothing();
+    expect().nothing(); // ts-mockito will only throw in case of errors -> this is required to avoid expection warnings
   }));
 
   it('should log error', fakeAsync(() => {

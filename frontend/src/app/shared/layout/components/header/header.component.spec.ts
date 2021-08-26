@@ -41,7 +41,7 @@ describe('HeaderComponent', () => {
 
       // Assert
       verify(authService.mock.logout(anything())).called();
-      expect().nothing();
+      expect().nothing(); // ts-mockito will only throw in case of errors -> this is required to avoid expection warnings
     });
   });
 });
