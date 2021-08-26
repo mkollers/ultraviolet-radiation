@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { LayoutModule } from '@shared/layout/layout.module';
 import { LocationModule } from '@shared/location/location.module';
-import { UserModule } from '@shared/user/user.module';
 import { ChartModule } from 'angular-highcharts';
 
 import { LineChartComponent } from './components/line-chart/line-chart.component';
@@ -23,8 +23,8 @@ import { LandingPageComponent } from './landing-page.component';
     ChartModule,
 
     // Custom
-    LocationModule,
-    UserModule
+    LayoutModule,
+    LocationModule
   ]
 })
 export class LandingPageModule { }
