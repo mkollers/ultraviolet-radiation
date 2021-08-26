@@ -31,6 +31,7 @@ import { LayoutModule } from './shared/layout/layout.module';
     LayoutModule
   ],
   providers: [
+    // Inject global objects to make mocking in unit tests possible
     { provide: STORAGE, useValue: localStorage },
     { provide: WINDOW, useValue: window }
   ],
